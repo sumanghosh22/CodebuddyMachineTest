@@ -134,7 +134,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-        Category::where('id',$id)->delete();
+        
+        $category = Category::find($id);
+
+        if($category) {
+            Category::where('parent_category_id',$id)->delete();
+            Category::where('id',$id)->delete();
+        }
         return back()->with('success', 'Category Deleted successfully.');
 
     }
