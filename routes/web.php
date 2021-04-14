@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('home', 'HomeController@index')->name('home');
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
 Route::get('admin/category-tree-view',['as'=>'category.list.add','uses'=>'CategoryController@manageCategory'])->middleware('is_admin');
